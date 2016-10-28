@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+<link href="styles/test.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="multi-calendars">
+    <div class="single-calendar-outer">
+       <input type="text" class="single-calendar" id="example1" />
+    </div>
+</div>
+    <div class="single-calendar-outer">    
+       <input type="text" class="single-calendar" id="example2" />
+    </div>
+    <div class="single-calendar-outer">
+       <input type="text" class="single-calendar" id="example3" />
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+<script src="glDatePicker.min.js"></script> 
+<script type="text/javascript">
+$(document).ready(function()
+{
+ var month=0;
+    
+        // Example #1 - First Month
+        $('#example1').glDatePicker(
+        {
+                selectedDate: new Date(2014, month, 1),
+                showAlways: true,
+                cssName: 'flatwhite',
+                specialDates: [
+        {
+            date: new Date(2014, 0, 8),
+            repeatMonth: false
+        },
+        {
+            date: new Date(2014, 0, 9),
+            repeatYear: false
+        }, 
+        {
+            date: new Date(2014, 0, 10),
+            repeatYear: false
+        }, 
+        {
+            date: new Date(2014, 0, 11),
+            repeatYear: false
+        }, 
+   ]
+        });
+                     // Example #2 - Second Month
+        $('#example2').glDatePicker(
+        {
+                showAlways: true,
+                setStartDate: new Date(2014, month+1, 1),
+                cssName: 'flatwhite',
+                specialDates: [
+        {
+            date: new Date(2014, 2, 10),
+            repeatMonth: false
+        },
+        {
+            date: new Date(2014, 2, 11),
+            repeatYear: false
+        }, 
+        {
+            date: new Date(2014, 2, 22),
+            repeatYear: false
+        }, 
+   ]
+        });
+     // Example #3 - Third Month
+        $('#example3').glDatePicker(
+        {
+                showAlways: true,
+                cssName: 'flatwhite',
+                selectedDate: new Date(2014, month+2, 1),
+                specialDates: [
+        {
+            date: new Date(2014, 3, 15),
+            repeatMonth: false
+        },
+        {
+            date: new Date(2014, 3, 16),
+            repeatYear: false
+        }, 
+   ]
+        });
+
+});
+</script>
+</body>
+</html>
