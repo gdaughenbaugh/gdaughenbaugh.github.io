@@ -1,32 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Example</title>
-    <link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+<link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <table><tr><td>
-    Current Month<input type="text" id="example1" />
+<p> From:
+<input type="text" id="from" />
+</p>
+<p> To:
+<input type="text" id="to" />
+</p>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+<script src="glDatePicker.min.js"></script> 
+<script type="text/javascript">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="glDatePicker.min.js"></script>
 
-    <script type="text/javascript">
-        $(window).load(function()
-        {
-            $('#example1').glDatePicker();
-        });
-    </script>
-    </td>
-    <td>
-    Next Month <input type="text" id="example2" />
+var today = new Date();
+var datelimit = new Date(today);
+datelimit.setDate(today.getDate() + 31);
 
-    <script type="text/javascript">
-        $(window).load(function()
-        {
-            $('#example2').glDatePicker();
-        });
-    </script>
-    </td></tr></table>
+
+
+$('#from').glDatePicker({
+    showAlways: false,
+    allowMonthSelect: true,
+    allowYearSelect: true,
+    prevArrow: '',
+    nextArrow: '',
+    selectedDate: today,
+    selectableDateRange: [{
+        from: today,
+        to: datelimit
+    }, ],
+    onClick: function (target, cell, date, data) {
+        target.val(date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
+
+        if (data != null) {
+            alert(data.message + '\n' + date);
+        }
+    }
+}).glDatePicker(true);
+
+
+var to = $('#to').glDatePicker(
+{
+    showAlways: false,
+    onClick: function (target, cell, date, data) {
+        target.val(date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
+
+        if (data != null) {
+            alert(data.message + '\n' + date);
+        }
+    }
+}).glDatePicker(true);
+
+$('#to').click(function() {
+    var fechaFrom = new Date($("#from").val());
+    var toLimit = new Date();
+    toLimit.setDate(fechaFrom.getDate() + 31);
+    to.options.selectableDateRange = [{
+        from: fechaFrom,
+        to: toLimit
+    }, ],
+    to.options.showAlways = false;
+    to.render();
+});
+
+
+</script>
 </body>
 </html>
