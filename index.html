@@ -1,34 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calendar Example</title>
+    <title>Example</title>
     <link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <table><tr><td>
-    Current Month <input type="text" id="Current Month" />
+    <input type="text" id="example" />
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="glDatePicker.min.js"></script>
+
     <script type="text/javascript">
         $(window).load(function()
-        { $('#example1').glDatePicker(); });
+        {
+            $('#example').glDatePicker();
+        });
     </script>
-<!--
-     </td>
-    <td>
-    Last Month <input type="text" id="Last Month" />
-    <script type="text/javascript">
-        $(window).load(function()
-        { $('#example2').glDatePicker(); });
-    </script>
-     </td>
-    <td>
-    Next Month <input type="text" id="Next Month" />
-    <script type="text/javascript">
-        $(window).load(function()
-        { $('#example3').glDatePicker(); });
-    </script>
--->
-     </td></tr></table>
 </body>
 </html>
