@@ -2,71 +2,92 @@
 <html>
 <head>
 <link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+<link href="styles/test.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<p> From:
-<input type="text" id="from" />
-</p>
-<p> To:
-<input type="text" id="to" />
-</p>
+<div class="multi-calendars">
+    <div class="single-calendar-outer">
+       <input type="text" class="single-calendar" id="example1" />
+    </div>
+</div>
+    <div class="single-calendar-outer">    
+       <input type="text" class="single-calendar" id="example2" />
+    </div>
+    <div class="single-calendar-outer">
+       <input type="text" class="single-calendar" id="example3" />
+</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
 <script src="glDatePicker.min.js"></script> 
 <script type="text/javascript">
-
-
-var today = new Date();
-var datelimit = new Date(today);
-datelimit.setDate(today.getDate() + 31);
-
-
-
-$('#from').glDatePicker({
-    showAlways: false,
-    allowMonthSelect: true,
-    allowYearSelect: true,
-    prevArrow: '',
-    nextArrow: '',
-    selectedDate: today,
-    selectableDateRange: [{
-        from: today,
-        to: datelimit
-    }, ],
-    onClick: function (target, cell, date, data) {
-        target.val(date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
-
-        if (data != null) {
-            alert(data.message + '\n' + date);
-        }
-    }
-}).glDatePicker(true);
-
-
-var to = $('#to').glDatePicker(
+$(document).ready(function()
 {
-    showAlways: false,
-    onClick: function (target, cell, date, data) {
-        target.val(date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
+ var month=0;
+    
+        // Example #1 - First Month
+        $('#example1').glDatePicker(
+        {
+                selectedDate: new Date(2014, month, 1),
+                showAlways: true,
+                cssName: 'flatwhite',
+                specialDates: [
+        {
+            date: new Date(2014, 0, 8),
+            repeatMonth: false
+        },
+        {
+            date: new Date(2014, 0, 9),
+            repeatYear: false
+        }, 
+        {
+            date: new Date(2014, 0, 10),
+            repeatYear: false
+        }, 
+        {
+            date: new Date(2014, 0, 11),
+            repeatYear: false
+        }, 
+   ]
+        });
+                     // Example #2 - Second Month
+        $('#example2').glDatePicker(
+        {
+                showAlways: true,
+                setStartDate: new Date(2014, month+1, 1),
+                cssName: 'flatwhite',
+                specialDates: [
+        {
+            date: new Date(2014, 2, 10),
+            repeatMonth: false
+        },
+        {
+            date: new Date(2014, 2, 11),
+            repeatYear: false
+        }, 
+        {
+            date: new Date(2014, 2, 22),
+            repeatYear: false
+        }, 
+   ]
+        });
+     // Example #3 - Third Month
+        $('#example3').glDatePicker(
+        {
+                showAlways: true,
+                cssName: 'flatwhite',
+                selectedDate: new Date(2014, month+2, 1),
+                specialDates: [
+        {
+            date: new Date(2014, 3, 15),
+            repeatMonth: false
+        },
+        {
+            date: new Date(2014, 3, 16),
+            repeatYear: false
+        }, 
+   ]
+        });
 
-        if (data != null) {
-            alert(data.message + '\n' + date);
-        }
-    }
-}).glDatePicker(true);
-
-$('#to').click(function() {
-    var fechaFrom = new Date($("#from").val());
-    var toLimit = new Date();
-    toLimit.setDate(fechaFrom.getDate() + 31);
-    to.options.selectableDateRange = [{
-        from: fechaFrom,
-        to: toLimit
-    }, ],
-    to.options.showAlways = false;
-    to.render();
 });
-
-
 </script>
 </body>
 </html>
