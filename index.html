@@ -13,33 +13,6 @@ Calendar
 
     <script type="text/javascript">
         $(window).load(function()
-        {
-            $('#example').glDatePicker();
-        });
-
-        $(window).load(function()
-        $('#example2').glDatePicker(
-        {
-            showAlways: true,
-            allowMonthSelect: false,
-            allowYearSelect: false,
-            prevArrow: '',
-            nextArrow: '',
-            selectedDate: new Date(2013, 8, 5),
-            selectableDateRange: [
-                { from: new Date(2013, 8, 1),
-                    to: new Date(2013, 8, 10) },
-                { from: new Date(2013, 8, 19),
-                    to: new Date(2013, 8, 22) },
-            ],
-            selectableDates: [
-                { date: new Date(2013, 8, 24) },
-                { date: new Date(2013, 8, 30) }
-            ]
-        }));
-
-
-        $(window).load(function()
 $('#example3').glDatePicker(
 {
     showAlways: true,
@@ -67,7 +40,6 @@ $('#example3').glDatePicker(
         }
     }
 }));
-
 
     </script>
 </body>
