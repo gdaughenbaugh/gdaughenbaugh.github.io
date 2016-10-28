@@ -1,0 +1,15 @@
+.multi-calendars {
+    margin-top: -300px;
+}
+.single-calendar {
+    width:300px;
+    border:none;
+    color:#fff;
+    height:305px;
+}
+.single-calendar-outer {
+    height:305px;
+     display:inline;
+    margin:5px;
+    visibility:hidden;
+}
